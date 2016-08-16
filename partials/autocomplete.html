@@ -1,0 +1,16 @@
+<div>
+<script type="text/ng-template" id="customTemplate.html">
+  <a>
+      <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
+      <i>({{match.model.fullName}})</i>
+      <i>({{match.model.className}})</i>
+  </a>
+</script>
+<blockquote><h1>Facebook type search autocomplete / typeahead using AngularJS+PHP+MySQL</h1></blockquote>
+<form class="form-search" ng-controller="autocompleteController">
+    Selected Student: {{selectedStudents}}
+        <br><br>
+        <input type="text" ng-model="selectedStudents" placeholder="Search Student" typeahead="u as u.username for u in studentdata | filter:$viewValue | limitTo:10" typeahead-min-length='1' typeahead-on-select='onSelectPart($item, $model, $label)' typeahead-template-url="customTemplate.html" class="form-control" style="width:350px;">
+        <i class="icon-search nav-search-icon"></i>
+</form>
+</div>
